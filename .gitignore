@@ -1,0 +1,9 @@
+# contains credentails for google analytics
+credential.json
+
+# contains environment variables
+.env
+
+
+# contains vs code settings
+.vscode
