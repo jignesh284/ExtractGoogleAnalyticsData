@@ -89,27 +89,31 @@ def google_analytics_reporting_api_data_extraction(viewID, dim, met, start_date,
          print((r.json()))
          print("error occured in the google analytics reporting api data extraction")
 
-def main():
+## This is the wrapper to fatch data from the google analytics 
+##  Parameters are start and end dates
+
+def fetch_data(start_date, end_date):  # format of date ='2020-08-25'
     client_id = os.environ.get('CLIENT_ID')
     client_secret = os.environ.get('CLIENT_SECRET')
     view_id = os.environ.get('VIEW_ID')
-
-
     dim=['ga:browser','ga:dimension1', 'ga:country', 'ga:region', 'ga:city', 'ga:latitude', 'ga:longitude'] 
     met=['ga:users','ga:revenuePerTransaction', 'ga:sessions', 'ga:sessionDuration', 'ga:pageviewsPerSession', 'ga:pageviews', 'ga:avgTimeOnPage']
-    start_date='2020-08-23'
-    end_date='2020-08-24'
     transaction_type='Transaction'
     goal_number=''
     condition=''
 
     refresh_token = get_refresh_token(client_id, client_secret)
     data = google_analytics_reporting_api_data_extraction(view_id, dim,met,start_date,end_date,refresh_token,transaction_type,goal_number,condition)
-    print(data)
+    return data
 
-main()
-
+def insertToDB(data):
+    pass
+    # collection = db["analytics"]
+    # print(type(data))
+    # updated = collection.insert_one({"email": "ahlawat@usc.edu"})
+    # print(updated)
 
 # https://ga-dev-tools.appspot.com/dimensions-metrics-explorer/
+# https://developers.google.com/analytics/solutions/articles/reporting-apps-script
 
 
