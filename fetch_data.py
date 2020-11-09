@@ -106,14 +106,5 @@ def fetch_data(start_date, end_date):  # format of date ='2020-08-25'
     data = google_analytics_reporting_api_data_extraction(view_id, dim,met,start_date,end_date,refresh_token,transaction_type,goal_number,condition)
     return data
 
-def insertToDB(data):
-    pass
-    # collection = db["analytics"]
-    # print(type(data))
-    # updated = collection.insert_one({"email": "ahlawat@usc.edu"})
-    # print(updated)
-
-# https://ga-dev-tools.appspot.com/dimensions-metrics-explorer/
-# https://developers.google.com/analytics/solutions/articles/reporting-apps-script
 
 
